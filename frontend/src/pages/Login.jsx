@@ -87,6 +87,7 @@ const Login = () => {
         width="full"
         maxWidth="400px"
         borderRadius="lg"
+        border="2px solid blue"
         boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         p={4}
       >
@@ -95,6 +96,7 @@ const Login = () => {
           textAlign="center"
           fontSize="20px"
           mb="20px"
+          textColor={"blue"}
         >
           LOGIN FORM
         </Heading>
@@ -107,7 +109,7 @@ const Login = () => {
             type="text"
             placeholder="Enter Email"
             borderRadius="lg"
-            focusBorderColor="teal.100"
+            focusBorderColor="blue.600"
             required
           />
         </FormControl>
@@ -120,7 +122,7 @@ const Login = () => {
             type="password"
             placeholder="Enter password"
             borderRadius="lg"
-            focusBorderColor="teal.100"
+            focusBorderColor="blue.600"
             required
           />
         </FormControl>
@@ -131,12 +133,12 @@ const Login = () => {
             width="full"
             p={4}
             borderRadius="lg"
-            colorScheme="teal"
+            colorScheme="blue"
             _hover={{
-              bg: "teal.300",
+              bg: "blue.300",
               color: "white",
             }}
-            variant="outline"
+            // variant="outline"
             mt={4}
             onClick={handleLogin}
           >
@@ -148,12 +150,12 @@ const Login = () => {
             width="full"
             p={4}
             borderRadius="lg"
-            colorScheme="teal"
+            colorScheme="blue"
             _hover={{
-              bg: "teal.300",
+              bg: "blue.300",
               color: "white",
             }}
-            variant="outline"
+            // variant="outline"
             mt={4}
             onClick={handleSignUp}
           >

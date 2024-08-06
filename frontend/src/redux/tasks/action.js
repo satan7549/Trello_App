@@ -43,7 +43,6 @@ export const createTask = (taskDetails) => async (dispatch) => {
 };
 
 export const updateTask = (taskId, taskDetails) => async (dispatch) => {
-  console.log(taskId, "taskId", taskDetails, "taskDetails");
   dispatch(updateTaskLoading());
   try {
     const response = await api.put(`${baseURL}/task/${taskId}`, taskDetails);

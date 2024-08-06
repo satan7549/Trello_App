@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // Base URL for API requests
-export const baseURL = "http://localhost:8080";
+// export const baseURL = "http://localhost:8080";
+export const baseURL = "https://trello-app-eaq2.onrender.com";
 
 // Create an Axios instance
 const api = axios.create({

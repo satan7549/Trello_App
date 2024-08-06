@@ -27,7 +27,7 @@ const Navbar = () => {
     toast({
       title: "Logged out successfully.",
       status: "success",
-      duration: 3000,
+      duration: 2000,
       isClosable: true,
     });
     navigate("/"); // Redirect to home or any other page after logout
@@ -37,8 +37,8 @@ const Navbar = () => {
     <Box
       bg="#157ee7"
       w="100%"
-      h="16" // Adjusted height for better spacing
-      p="4" // Adjusted padding for more space
+      h={{ base: "20", md: "16" }} // Adjusted height for responsiveness
+      p={{ base: 3, md: 4 }} // Adjusted padding for more space
       borderBottom="1px"
       borderColor="#9fadbc29"
     >
