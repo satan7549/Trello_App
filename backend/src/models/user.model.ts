@@ -5,6 +5,15 @@ import validator from "validator";
 import { IUser } from "../types/user";
 
 const userSchema: Schema<IUser> = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: [true, "Please enter first name"],
+  },
+  lastName: {
+    type: String,
+    required: [false, "Please enter email"],
+    default: "",
+  },
   email: {
     type: String,
     required: [true, "Please enter email"],

@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import UserModel from "../models/user.model";
 import httpStatus from "http-status";
 import sendToken from "../utils/sendToken";
-import { IUser, UserRole } from "../types/user";
+import { IUser } from "../types/user";
 import sendResponse from "../utils/sendResponse";
 import validator from "validator";
 import messages from "../utils/messages";
@@ -14,14 +14,14 @@ const registerUser = async (
   next: NextFunction
 ) => {
   try {
-    const { email, password, role } = req.body;
+    const { email, password, firstName, lastName = "" } = req.body;
 
-    if (!email || !password) {
+    if (!email || !password || !firstName) {
       return sendResponse(
         res,
         httpStatus.BAD_REQUEST,
         false,
-        messages.PROVIDE_EMAIL_PASSWORD
+        messages.ALL_CREDENTIAL_REUIRED
       );
     }
 
@@ -58,13 +58,12 @@ const registerUser = async (
 
     const hashedPassword = await bcrypt.hash(password, 5);
 
-    // Use provided role or default to 'user'
-    const userRole = role || UserRole.USER;
 
     const user: IUser = await UserModel.create({
       email,
+      firstName,
+      lastName,
       password: hashedPassword,
-      role: userRole,
     });
 
     sendToken(res, httpStatus.CREATED, user);

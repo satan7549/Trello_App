@@ -1,11 +1,8 @@
 import { Document } from "mongoose";
 
-export enum UserRole {
-  USER = "user",
-  SUPER_ADMIN = "superAdmin",
-}
-
 export interface IUser extends Document {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   googleId?: string;

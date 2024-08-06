@@ -12,7 +12,7 @@ const messages = {
   TASKS_FETCHED: "Fetch Successful",
   TASK_UPDATED: "Task Updated Successfully",
   TASK_DELETED: "Task Deleted Successfully",
-  ALL_CREDENTIAL_REUIRED: "Both Feild Are Required",
+  ALL_CREDENTIAL_REUIRED: "All Feild Are Required",
   SERVER_ERROR: "Server error.",
   UNAUTHORIZED: "Please Log In To Tccess This Resource.",
 };
