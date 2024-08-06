@@ -43,10 +43,12 @@ export const createTask = (taskDetails) => async (dispatch) => {
 };
 
 export const updateTask = (taskId, taskDetails) => async (dispatch) => {
+  console.log(taskId, "taskId", taskDetails, "taskDetails");
   dispatch(updateTaskLoading());
   try {
     const response = await api.put(`${baseURL}/task/${taskId}`, taskDetails);
     dispatch(updateTaskSuccess(response.data));
+    dispatch(fetchTasks());
   } catch (error) {
     dispatch(
       updateTaskFail(
@@ -57,6 +59,7 @@ export const updateTask = (taskId, taskDetails) => async (dispatch) => {
 };
 
 export const deleteTask = (taskId) => async (dispatch) => {
+  console.log(taskId);
   dispatch(deleteTaskLoading());
   try {
     await api.delete(`${baseURL}/task/${taskId}`);

@@ -1,11 +1,35 @@
 import React from "react";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { useDrag } from "react-dnd";
+import { useDispatch } from "react-redux";
+import { deleteTask } from "../redux/tasks/action";
 
-const TaskItem = ({ task, provided }) => {
+const TaskItem = ({ task, index }) => {
+  const dispatch = useDispatch();
+  const [{ isDragging }, drag] = useDrag({
+    type: "TASK",
+    item: { ...task, index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
   const createdAt = new Date(task.createdAt);
+
+  const handleDelete = () => {
+    dispatch(deleteTask(task._id));
+  };
+
+  const handleEdit = () => {
+    // You might want to implement a modal or redirect to an edit page
+    // For now, just a console log for demo purposes
+    console.log("Edit task:", task);
+    // dispatch(updateTask(task.id, { ...task, title: "Updated title" })); // Example of how to dispatch update
+  };
 
   return (
     <Box
+      ref={drag}
       w="full"
       p={4}
       bg="blue.200"
@@ -14,9 +38,7 @@ const TaskItem = ({ task, provided }) => {
       borderColor="transparent"
       _hover={{ borderColor: "blue.500" }}
       cursor="pointer"
-      ref={provided.innerRef}
-      {...provided.draggableProps}
-      {...provided.dragHandleProps}
+      opacity={isDragging ? 0.5 : 1}
     >
       <Text fontWeight="bold">{task.title}</Text>
       <Text>Description: {task.description}</Text>
@@ -32,7 +54,13 @@ const TaskItem = ({ task, provided }) => {
         })}
       </Text>
       <Flex mt={2} justify="space-around">
-        <Button size="sm" bg="red.600" color="white" _hover={{ bg: "red.700" }}>
+        <Button
+          size="sm"
+          bg="red.600"
+          color="white"
+          _hover={{ bg: "red.700" }}
+          onClick={handleDelete}
+        >
           Delete
         </Button>
         <Button
@@ -40,6 +68,7 @@ const TaskItem = ({ task, provided }) => {
           bg="blue.400"
           color="white"
           _hover={{ bg: "blue.500" }}
+          onClick={handleEdit}
         >
           Edit
         </Button>

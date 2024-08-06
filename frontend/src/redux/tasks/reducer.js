@@ -28,7 +28,7 @@ const taskSlice = createSlice({
     },
     createTaskSuccess(state, action) {
       state.loading = false;
-      state.tasks.push(action.payload);
+      state.tasks = [...state.tasks, action.payload];
     },
     createTaskFail(state, action) {
       state.loading = false;
@@ -79,4 +79,3 @@ export const {
 } = taskSlice.actions;
 
 export default taskSlice.reducer;
-
