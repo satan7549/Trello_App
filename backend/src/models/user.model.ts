@@ -22,9 +22,15 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "Please enter password"],
+    required: function () {
+      return !this.googleId;
+    },
     minLength: [6, "Password should be greater than 6 characters"],
     select: false,
+  },
+  profileImage: {
+    type: String,
+    default: "",
   },
   googleId: { type: String, unique: true },
   createdAt: {

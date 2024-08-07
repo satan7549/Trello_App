@@ -4,6 +4,7 @@ export interface IUser extends Document {
   firstName: string;
   lastName: string;
   email: string;
+  profileImage: string;
   password: string;
   googleId?: string;
   createdAt: Date;

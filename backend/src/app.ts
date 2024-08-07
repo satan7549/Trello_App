@@ -1,12 +1,24 @@
 import express, { Request, Response, Application } from "express";
 import cors from "cors";
+import session from "express-session";
+import passport from "passport";
 import userRoutes from "./routes/user.routes";
 import { isUserAuthenticated } from "./middleware/user.auth";
 import taskRouter from "./routes/task.routes";
-// import session from "express-session";
-// import passport from "passport";
+import "./config/passportConfig";
 
 const app: Application = express();
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET!,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(
   cors({
@@ -15,14 +27,6 @@ app.use(
 );
 
 app.use(express.json());
-
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET!,
-//     resave: false,
-//     saveUninitialized: false,
-//   })
-// );
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello");

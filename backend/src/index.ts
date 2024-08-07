@@ -1,10 +1,9 @@
 import dotenv from "dotenv";
+// Load environment variables
+dotenv.config();
 import { Server } from "http";
 import ConnectDB from "./config/db.connect";
 import app from "./app";
-
-// Load environment variables
-dotenv.config();
 
 const port = process.env.PORT || 8090;
 
