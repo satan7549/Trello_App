@@ -14,6 +14,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../redux/auth/action";
 import axios from "axios";
+import { baseURL } from "../utils/axiosInstance";
 
 const Signup = () => {
   const [signupDetails, setSignupDetails] = useState({
@@ -85,7 +86,7 @@ const Signup = () => {
   };
 
   const handleGoogleSignup = async () => {
-    window.open("http://localhost:8080/user/google", "_self");
+    window.open(`${baseURL}/user/google`, "_self");
   };
 
   useEffect(() => {

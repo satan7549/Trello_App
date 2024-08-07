@@ -14,9 +14,7 @@ const PrivateRoute = ({ children }) => {
     const token = urlParams.get("token");
 
     if (token) {
-      console.log(token);
-      // const user = parseJwt(token); // Implement parseJwt to decode the token and get user info
-      // dispatch(loginSuccess({ token, user }));
+      // console.log(token);
       localStorage.setItem("token", token);
     }
   }, [location.search, dispatch]);

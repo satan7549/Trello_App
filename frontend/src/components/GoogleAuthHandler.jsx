@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { baseURL } from "../utils/axiosInstance";
 import { loginSuccess } from "../redux/auth/reducer";
 
 const GoogleAuthHandler = () => {
