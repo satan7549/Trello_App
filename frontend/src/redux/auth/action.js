@@ -24,6 +24,8 @@ export const login = (loginDetails) => async (dispatch) => {
   }
 };
 
+
+
 export const signup = (signupDetails) => async (dispatch) => {
   dispatch(signupLoading());
   try {

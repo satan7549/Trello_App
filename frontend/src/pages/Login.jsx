@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import {
   Button,
   Container,
   FormControl,
   Heading,
   Input,
+  Link,
+  Text,
   VStack,
   useToast,
 } from "@chakra-ui/react";
@@ -70,10 +72,6 @@ const Login = () => {
       });
     }
   }, [error, toast]);
-
-  const handleSignUp = () => {
-    navigate("/signup");
-  };
 
   return (
     <Container
@@ -145,23 +143,12 @@ const Login = () => {
             LOGIN
           </Button>
         </FormControl>
-        <FormControl>
-          <Button
-            width="full"
-            p={4}
-            borderRadius="lg"
-            colorScheme="blue"
-            _hover={{
-              bg: "blue.300",
-              color: "white",
-            }}
-            // variant="outline"
-            mt={4}
-            onClick={handleSignUp}
-          >
-            SIGN UP
-          </Button>
-        </FormControl>
+        <Text mt={4}>
+          Create an account?{" "}
+          <Link as={RouterLink} to="/signup" color="blue.600">
+            Signup
+          </Link>
+        </Text>
       </VStack>
     </Container>
   );

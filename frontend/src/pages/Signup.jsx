@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../redux/auth/action";
+import axios from "axios";
 
 const Signup = () => {
   const [signupDetails, setSignupDetails] = useState({
@@ -81,6 +82,10 @@ const Signup = () => {
     }
 
     dispatch(signup({ firstName, lastName, email, password }));
+  };
+
+  const handleGoogleSignup = async () => {
+    window.open("http://localhost:8080/user/google", "_self");
   };
 
   useEffect(() => {
@@ -222,6 +227,24 @@ const Signup = () => {
             Login
           </Link>
         </Text>
+        <FormControl>
+          <Button
+            isLoading={loading}
+            loadingText="Submitting"
+            width="full"
+            p={4}
+            borderRadius="lg"
+            colorScheme="blue"
+            _hover={{
+              bg: "blue.300",
+              color: "white",
+            }}
+            mt={4}
+            onClick={handleGoogleSignup}
+          >
+            Sign up with Google
+          </Button>
+        </FormControl>
       </VStack>
     </Container>
   );
